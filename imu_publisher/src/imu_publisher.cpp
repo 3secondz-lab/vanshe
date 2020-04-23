@@ -95,13 +95,13 @@ sensor_msgs::Imu gen_msg_from_data(char data[][BUF_SIZE]){
 
                 imu.linear_acceleration_covariance = {-1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
         }else{
-            // imu.linear_acceleration.x = axd*acc_fsr/((double) INT16_MAX);
-            // imu.linear_acceleration.y = ayd*acc_fsr/((double) INT16_MAX);
-            // imu.linear_acceleration.z = azd*acc_fsr/((double) INT16_MAX);
+            imu.linear_acceleration.x = axd*acc_fsr/((double) INT16_MAX);
+            imu.linear_acceleration.y = ayd*acc_fsr/((double) INT16_MAX);
+            imu.linear_acceleration.z = azd*acc_fsr/((double) INT16_MAX);
 
-            imu.linear_acceleration.x = axd;
-            imu.linear_acceleration.y = ayd;
-            imu.linear_acceleration.z = azd;
+            // imu.linear_acceleration.x = axd;
+            // imu.linear_acceleration.y = ayd;
+            // imu.linear_acceleration.z = azd;
 
             imu.linear_acceleration_covariance = {1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
         }
@@ -134,13 +134,13 @@ sensor_msgs::Imu gen_msg_from_data(char data[][BUF_SIZE]){
 
                 imu.angular_velocity_covariance = {-1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
         }else{
-            // imu.angular_velocity.x = gxd*gyr_fsr/((double) INT16_MAX);
-            // imu.angular_velocity.y = gyd*gyr_fsr/((double) INT16_MAX);
-            // imu.angular_velocity.z = gzd*gyr_fsr/((double) INT16_MAX);
+            imu.angular_velocity.x = gxd*gyr_fsr/((double) INT16_MAX);
+            imu.angular_velocity.y = gyd*gyr_fsr/((double) INT16_MAX);
+            imu.angular_velocity.z = gzd*gyr_fsr/((double) INT16_MAX);
 
-            imu.angular_velocity.x = gxd;
-            imu.angular_velocity.y = gyd;
-            imu.angular_velocity.z = gzd;
+            // imu.angular_velocity.x = gxd;
+            // imu.angular_velocity.y = gyd;
+            // imu.angular_velocity.z = gzd;
 
             imu.angular_velocity_covariance = {1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0};
         }
@@ -160,15 +160,15 @@ int main(int argc, char** argv){
     nh.param("topic_imu", topic_imu, string("imu"));
     nh.param("dev_imu", dev_imu, string("/dev/ttyUSB0"));
 
-    // nh.param("acc_fsr", acc_fsr, 4.0);
-    // nh.param("gyr_fsr", gyr_fsr, 2000.0);
+    nh.param("acc_fsr", acc_fsr, 2.0);
+    nh.param("gyr_fsr", gyr_fsr, 125.0);
 
     cout << "freq_imu : " << freq_imu << endl;
     cout << "topic_imu : " << topic_imu << endl;
     cout << "dev_imu : " << dev_imu << endl;
 
-    // cout << "acc_fsr : " << acc_fsr << endl;
-    // cout << "gyr_fsr : " << gyr_fsr << endl;
+    cout << "acc_fsr : " << acc_fsr << endl;
+    cout << "gyr_fsr : " << gyr_fsr << endl;
 
     // Connect to IMU device
     int fd;
