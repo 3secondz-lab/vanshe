@@ -1,0 +1,30 @@
+<!-- vanshe launch -->
+
+<launch>
+    <arg name = "freq_imu" default="100" />
+    <arg name = "topic_imu" default="imu" />
+    <arg name = "port_imu" default = "/dev/ttyUSB0" />
+    <arg name = "freq_gps" default="10" />
+    <arg name = "topic_gps" default="ubx" />
+    <arg name = "param_gps" default="m8u" />
+
+    <arg name = "acc_fsr" default="2.0" />
+    <arg name = "gyr_fsr" default="125.0" />
+
+    <node name="imu" pkg="imu_publisher" type="imu_publisher" required="true" output="screen">
+        <param name="freq_imu" value="$(arg freq_imu)" type="int" />
+        <param name="topic_imu" value="$(arg topic_imu)" type="str" />
+        <param name="port_imu" value="$(arg port_imu)" type="str" />
+        <param name="acc_fsr" value="$(arg acc_fsr)" type="double" />
+        <param name="gyr_fsr" value="$(arg gyr_fsr)" type="double" />
+        
+
+    </node>
+
+    <node name="gps" pkg="ublox_gps" type="ublox_gps" output="screen"
+          clear_params="true" respawn="true" respawn_delay="30">
+          <rosparam command="load"
+                    file="$(find ublox_gps)/config/$(arg param_gps).yaml" />
+    </node>
+
+</launch>
