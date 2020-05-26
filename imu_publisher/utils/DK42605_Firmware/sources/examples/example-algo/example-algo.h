@@ -2,7 +2,7 @@
  * ________________________________________________________________________________________________________
  * Copyright (c) 2016-2016 InvenSense Inc. All rights reserved.
  *
- * This software, related documentation and any modifications thereto (collectively “Software”) is subject
+ * This software, related documentation and any modifications thereto (collectively ï¿½Softwareï¿½) is subject
  * to InvenSense and its licensors' intellectual property rights under U.S. and international copyright
  * and other intellectual property rights laws.
  *
@@ -70,8 +70,8 @@
  * - ICM426XX_GYRO_CONFIG0_ODR_100_HZ (100 Hz)
  * - ICM426XX_GYRO_CONFIG0_ODR_50_HZ (50 Hz)
  */
-#define GYRO_FREQ            ICM426XX_GYRO_CONFIG0_ODR_1_KHZ
-#define ACCEL_FREQ           ICM426XX_ACCEL_CONFIG0_ODR_1_KHZ
+#define GYRO_FREQ            ICM426XX_GYRO_CONFIG0_ODR_200_HZ
+#define ACCEL_FREQ           ICM426XX_ACCEL_CONFIG0_ODR_200_HZ
 
 /*
  * Magnetometer output data rate in us
