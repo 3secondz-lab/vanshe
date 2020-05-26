@@ -59,9 +59,15 @@ string read_line_check(int fd, char* buf, int buf_size){
     return string();
 }
 
-sensor_msgs::Imu gen_msg_from_data(char data[][BUF_SIZE]){
+sensor_msgs::Imu gen_msg_from_data(char data[][BUF_SIZE], uint64_t tOffset){
     sensor_msgs::Imu imu;
-    imu.header.stamp = ros::Time::now();
+
+    // Sensor time : us -> ns
+    // Ros time : ns
+    uint64_t tSensor = 1000 * (uint64_t) atoi(data[0]);
+    uint64_t t = tSensor + tOffset;
+
+    imu.header.stamp.fromNSec(t);
     imu.header.frame_id = "base_link";
 
     // No orientation
@@ -198,6 +204,50 @@ int main(int argc, char** argv){
     ros::Publisher pub = nh.advertise<sensor_msgs::Imu>(topic_imu, 1);
     ros::Rate r(freq_imu);
 
+    // Timestamp synchronization
+    uint64_t tOffset = 0;
+
+    bool isInitialized = false;
+    while(!isInitialized && nh.ok() && !request_stop){
+        try{
+            // Get line from serial port
+            // NOTE : Sending 's' -> Get output
+            ros::Time tRos = ros::Time::now();
+
+            write(fd, "s\n", 1);
+            str_line = read_line_check(fd, buf, BUF_SIZE);
+
+            if(str_line.empty()){
+                continue;
+            }
+
+            // Expected data format :
+            // [Timestamp AccX AccY AccZ Temp GyrX GyrY GyrZ]
+            char vals[NUM_DATA][BUF_SIZE] = {0};
+            int num = sscanf(str_line.c_str(), "%s %s %s %s %s %s %s %s",
+                                vals[0], vals[1], vals[2], vals[3],
+                                vals[4], vals[5], vals[6], vals[7]);
+
+            if(num != NUM_DATA){
+                continue;
+            }
+
+            // Sensor time : us -> ns
+            // Ros time : ns
+            uint64_t tSensor = 1000 * (uint64_t) atoi(vals[0]);
+            uint64_t tRosNs = tRos.toNSec();
+            tOffset = tRosNs - tSensor;
+
+            ROS_INFO_STREAM_NAMED(__FILE__, "Initialization done - Sensor time : " << tSensor << ", ROS time : " << tRosNs << ", Offset : " << tOffset);
+
+            isInitialized = true;
+        }catch(exception& e){
+            cout << "Exception occured : " << e.what() << endl;
+        }
+        
+        r.sleep();
+    }
+
     while(nh.ok() && !request_stop){
         try{
             // Get line from serial port
@@ -220,7 +270,7 @@ int main(int argc, char** argv){
                 continue;
             }
 
-            sensor_msgs::Imu msg = gen_msg_from_data(vals);
+            sensor_msgs::Imu msg = gen_msg_from_data(vals, tOffset);
 
             pub.publish(msg);
         }catch(exception& e){
