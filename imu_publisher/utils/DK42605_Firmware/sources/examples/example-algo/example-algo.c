@@ -397,8 +397,9 @@ void HandleInvDeviceFifoPacket(inv_icm426xx_sensor_event_t * event)
 	if (output.mask & INVN_ALGO_AGM_OUTPUT_MASK_GYRO_CAL) {
 		iter_algo++;
 
-		if (iter_algo % ((int)(print_period_us/odr_bitfield_to_us(GYRO_FREQ))) == 0)
-			print_algo_inputs_outputs();
+		//if (iter_algo % ((int)(print_period_us/odr_bitfield_to_us(GYRO_FREQ))) == 0)
+		
+		print_algo_inputs_outputs();
 	}
 }
 
@@ -544,7 +545,9 @@ static void print_algo_inputs_outputs(void)
 	//}
 
 	char rchar = inv_uart_mngr_getc(INV_UART_SENSOR_CTRL);
-	// INV_MSG(INV_MSG_LEVEL_INFO, "Input : %c\n", rchar);
+
+	//INV_MSG(INV_MSG_LEVEL_INFO, "Input : %c\n", rchar);
+
 	if(rchar != 's')
 		return;
 

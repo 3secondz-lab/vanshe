@@ -55,6 +55,7 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <avrdeviceexpectedsignature>0x24570AE0</avrdeviceexpectedsignature>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>

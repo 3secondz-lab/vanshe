@@ -214,6 +214,8 @@ int main(void)
 	INV_MSG(INV_MSG_LEVEL_INFO, " ");
 	INV_MSG(INV_MSG_LEVEL_INFO, "Output format : [timestamp AccX AccY AccZ Temp GyrX GyrY GyrZ");
 	INV_MSG(INV_MSG_LEVEL_INFO, " ");
+	INV_MSG(INV_MSG_LEVEL_INFO, "Last updated : 2020-05-28 15:57");
+	INV_MSG(INV_MSG_LEVEL_INFO, " ");
 
 	/* Print reminder on how to use example */
 	 //print_help();
@@ -260,6 +262,7 @@ int main(void)
 		}
 		
 		//if (irq_event_main_uart)
+			//print_algo_inputs_outputs();
 			//process_user_command();
 		
 	} while(1);
