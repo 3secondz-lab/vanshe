@@ -207,9 +207,9 @@ int main(void)
 	INV_MSG(INV_MSG_LEVEL_INFO, "Jinsun Park (zzangjinsun@3secondz.com)");
 	INV_MSG(INV_MSG_LEVEL_INFO, " ");
 	INV_MSG(INV_MSG_LEVEL_INFO, "Current setup : ");
-	INV_MSG(INV_MSG_LEVEL_INFO, " Acc FSR : 4g");
+	INV_MSG(INV_MSG_LEVEL_INFO, " Acc FSR : 2g");
 	INV_MSG(INV_MSG_LEVEL_INFO, " Acc ODR : 100Hz");
-	INV_MSG(INV_MSG_LEVEL_INFO, " Gyr FSR : 2000dps");
+	INV_MSG(INV_MSG_LEVEL_INFO, " Gyr FSR : 125dps");
 	INV_MSG(INV_MSG_LEVEL_INFO, " Gyr ODR : 100Hz");
 	INV_MSG(INV_MSG_LEVEL_INFO, " ");
 	INV_MSG(INV_MSG_LEVEL_INFO, "Output format : [timestamp AccX AccY AccZ Temp GyrX GyrY GyrZ");

@@ -2,7 +2,7 @@
  * ________________________________________________________________________________________________________
  * Copyright (c) 2017 InvenSense Inc. All rights reserved.
  *
- * This software, related documentation and any modifications thereto (collectively “Software”) is subject
+ * This software, related documentation and any modifications thereto (collectively ï¿½Softwareï¿½) is subject
  * to InvenSense and its licensors' intellectual property rights under U.S. and international copyright
  * and other intellectual property rights laws.
  *
@@ -70,8 +70,8 @@ static int32_t icm_mounting_matrix[9]= { (1<<30),     0,           0,
 		static const int32_t gyr_fsr = 2000; /* +/- 2000dps */
 	#endif
 #else
-	static const int32_t acc_fsr = 4;        /* +/- 4g */
-	static const int32_t gyr_fsr = 2000;     /* +/- 2000dps */
+	static const int32_t acc_fsr = 2;        /* +/- 2g */
+	static const int32_t gyr_fsr = 125;     /* +/- 125dps */
 #endif
 
 

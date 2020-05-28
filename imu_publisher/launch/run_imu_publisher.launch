@@ -1,7 +1,7 @@
 <!-- imu_publisher launch file -->
 <launch>
 
-  <arg name="freq_imu" default="250" />
+  <arg name="freq_imu" default="100" />
   <arg name="topic_imu" default="imu" />
   <arg name="dev_imu" default="/dev/ttyUSB0" />
 
