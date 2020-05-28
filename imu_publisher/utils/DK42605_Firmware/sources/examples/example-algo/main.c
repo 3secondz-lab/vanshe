@@ -2,7 +2,7 @@
  * ________________________________________________________________________________________________________
  * Copyright (c) 2017 InvenSense Inc. All rights reserved.
  *
- * This software, related documentation and any modifications thereto (collectively “Software”) is subject
+ * This software, related documentation and any modifications thereto (collectively ï¿½Softwareï¿½) is subject
  * to InvenSense and its licensors' intellectual property rights under U.S. and international copyright
  * and other intellectual property rights laws.
  *
@@ -208,9 +208,9 @@ int main(void)
 	INV_MSG(INV_MSG_LEVEL_INFO, " ");
 	INV_MSG(INV_MSG_LEVEL_INFO, "Current setup : ");
 	INV_MSG(INV_MSG_LEVEL_INFO, " Acc FSR : 4g");
-	INV_MSG(INV_MSG_LEVEL_INFO, " Acc ODR : 1kHz");
+	INV_MSG(INV_MSG_LEVEL_INFO, " Acc ODR : 100Hz");
 	INV_MSG(INV_MSG_LEVEL_INFO, " Gyr FSR : 2000dps");
-	INV_MSG(INV_MSG_LEVEL_INFO, " Gyr ODR : 1kHz");
+	INV_MSG(INV_MSG_LEVEL_INFO, " Gyr ODR : 100Hz");
 	INV_MSG(INV_MSG_LEVEL_INFO, " ");
 	INV_MSG(INV_MSG_LEVEL_INFO, "Output format : [timestamp AccX AccY AccZ Temp GyrX GyrY GyrZ");
 	INV_MSG(INV_MSG_LEVEL_INFO, " ");
