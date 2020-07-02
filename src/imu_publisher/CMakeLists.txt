@@ -54,7 +54,7 @@ find_package(catkin REQUIRED COMPONENTS
 #   Message2.msg
 # )
 
-## Generate services in the 'srv' folder
+## Generate services inimu_publisher the 'srv' folder
 # add_service_files(
 #   FILES
 #   Service1.srv
