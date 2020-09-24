@@ -1,0 +1,22 @@
+imu:
+  model: icm42605
+  
+  # Gyro noise sigma deg/s/root-Hz
+  std_gyro: 0.0038
+  # Accel noise sigma g/root-Hz
+  std_acc: 0.00007
+
+  # Bias tolerance
+  # deg/s
+  std_gyro_bias: 0.5
+  # g
+  std__acc_bias: 0.002
+
+  freq: 100
+gnss:
+  model: m8u
+  # velocity accuracy m/s heading accuracy deg
+  freq: 10
+  vacc: 0.5
+  hacc: 1
+

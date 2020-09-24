@@ -1,0 +1,20 @@
+debug: 1
+rate: 10
+nav_rate: 1
+
+nmea: false
+device: /dev/ttyACM0
+frame_id: m8u 
+
+# save:
+#   mask: 3103                                        
+#   device: 4             
+
+gnss:
+  glonass: false   
+  beidou: false        
+  qzss: false               
+
+publish:
+  nav:
+    all: true
