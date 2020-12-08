@@ -1,8 +1,0 @@
-prefix=/home/rnd/ros/vanshe/install
-
-Name: imu_publisher
-Description: Description of imu_publisher
-Version: 0.0.0
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib -limu_publisher
-Requires: roscpp rospy sensor_msgs std_msgs
